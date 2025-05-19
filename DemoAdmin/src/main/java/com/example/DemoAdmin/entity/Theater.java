@@ -32,6 +32,10 @@ public class Theater {
     @Column(name = "TotalScreens", nullable = false)
     private Integer totalScreens;
 
+//
+//    @Column(name = "TheaterBrandId", nullable = false)
+//    private TheaterBrand theaterBrand;
+
     @OneToMany(mappedBy = "theater")
     @JsonManagedReference
     private Set<Screen> screens = new LinkedHashSet<>();
