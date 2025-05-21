@@ -6,4 +6,5 @@ import lombok.Data;
 public class TheaterBrandResponse {
     private Integer id;
     private String theaterBrandName;
+    private String logo;
 }

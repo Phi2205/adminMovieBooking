@@ -18,4 +18,7 @@ public class TheaterBrand {
 
     @Column(name = "TheaterBrandName", nullable = false)
     private String theaterBrandName;
+
+    @Column(name = "Logo", nullable = false)
+    private String logo;
 }

@@ -9,13 +9,17 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+import java.util.List;
+
 @RestController
 @RequestMapping("api/admin/theaterbrands")
 @RequiredArgsConstructor
 public class TheaterBrandController {
     private final TheaterBrandService theaterBrandService;
     @PostMapping
-    public ResponseEntity<ApiResponse<TheaterBrandResponse>> creatTheaterBrand(@RequestBody TheaterBrandRequest request){
+    public ResponseEntity<ApiResponse<TheaterBrandResponse>> creatTheaterBrand(@ModelAttribute TheaterBrandRequest request) throws IOException {
+        System.out.println(request.getLogo());
         TheaterBrandResponse response = theaterBrandService.createTheaterBrand(request);
         return ResponseEntity.ok(new ApiResponse<>("Theater Brand create successfully", response));
     }
@@ -33,5 +37,10 @@ public class TheaterBrandController {
     public ResponseEntity<ApiResponse<TheaterBrandResponse>> deleteTheaterBrand(@PathVariable Integer theaterBrandId){
         theaterBrandService.deleteTheaterBrand(theaterBrandId);
         return ResponseEntity.noContent().build();
+    }
+    @GetMapping
+    public List<TheaterBrandResponse> getAllTheaterBrand(){
+        List<TheaterBrandResponse> responses = theaterBrandService.getAllTheaterBand();
+        return responses;
     }
 }
